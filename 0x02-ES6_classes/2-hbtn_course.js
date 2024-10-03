@@ -1,60 +1,52 @@
-export default class HolbertonCourse {
-	constructor(name, length, students) {
-		this._name = this._validateName(name);
-		this._length = this._validateLength(length);
-		this._students = this._validateStudents(students);
-	}
+class HolbertonCourse {
+  constructor(name, length, students) {
+    this.name = name;
+    this.length = length;
+    this.students = students;
+  }
 
-	/**
-	 * Getter
-	 */
-	get name() {
-		return this._name;
-	}
+  /**
+   * @param name
+   */
+  set name(name) {
+    if (typeof name !== 'string') {
+      throw new TypeError('Name must be a string');
+    }
+    this._name = name;
+  }
 
-	get length() {
-		return this._length;
-	}
+  get name() {
+    return this._name;
+  }
 
-	get students() {
-		return this._students;
-	}
-	
-	/**
-	 * Setters
-	 */
-	set name(value) {
-		this._name = this._validateName(value);
-	}
+  /**
+   * @param length
+   */
+  set length(length) {
+    if (typeof length !== 'number') {
+      throw new TypeError('Length must be a number');
+    }
+    this._length = length;
+  }
 
-	set length(value) {
-		this._length = this._validateLength(value);
-	}
+  get length() {
+    return this._length;
+  }
 
-	set students(value) {
-		this._students = this._validateStudents(value);
-	}
-	/**
-	 * Type validation method
-	 */
-	_validateName(name) {
-		if (typeof name !== 'string') {
-			throw new TypeError('Name must be a string');
-		}
-		return name;
-	}
+  /**
+   * @param students
+   */
+  set students(students) {
+    if (students instanceof Array) {
+      this._students = students;
+    } else {
+      throw new TypeError('Students must be an Array');
+    }
+  }
 
-	_validateLength(length) {
-		if (typeof length !== 'number') {
-			throw new TypeError('Length must be a number');
-		}
-		return length;
-	}
-
-	_validateStudents(students) {
-		if (!Array.isArray(students) || !students.every(student => typeof student === 'string')) {
-			throw new TypeError('Students must be an array of strings');
-		}
-		return students;
-	}
+  get students() {
+    return this._students;
+  }
 }
+
+export default HolbertonCourse;
