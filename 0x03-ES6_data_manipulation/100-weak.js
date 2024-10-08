@@ -1,3 +1,5 @@
+export const weak = new WeakMap();
+
 export const queryAPI = (endpoint) => {
   if (weakMap.has(endpoint)) {
     const endpointData = weakMap.get(endpoint);
@@ -9,5 +11,3 @@ export const queryAPI = (endpoint) => {
     weakMap.set(endpoint, 1);
   }
 };
-
-export const weakMap = new WeakMap();
