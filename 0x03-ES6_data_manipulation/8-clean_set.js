@@ -10,4 +10,4 @@ const cleanSet = (set, startString) => {
   return strings.join('-');
 };
 
-module.exports cleanSet;
+module.exports = cleanSet;
