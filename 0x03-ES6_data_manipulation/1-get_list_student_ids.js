@@ -6,4 +6,4 @@ function getListStudentIds(students) {
   return students.map(student => student.id);
 }
 
-module.exports = getListStudentIds;
+export default getListStudentIds;
