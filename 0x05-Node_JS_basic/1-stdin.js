@@ -1,20 +1,18 @@
 #!/usr/bin/env node
 
-// Display initial message
-console.log('Welcome to Holberton School, what is your name?');
+process.stdout.write('Welcome to Holberton School, what is your name?\n');
 
-// Listen for user input
-process.stdin.on('data', (data) => {
-  const input = data.toString().trim(); // Get user input, trimmed of whitespace
-  console.log(`Your name is: ${input}`);
-
-  // Exit process
-  console.log('This important software is now closing');
-  process.exit();
-});
-
-// Handle program exit explicitly
-process.on('SIGINT', () => {
-  console.log('\nThis important software is now closing');
-  process.exit();
-});
+if (process.stdin.isTTY) {
+  process.stdin.on('data', (data) => {
+    process.stdout.write(`Your name is: ${data.toString()}`);
+    process.exit();
+  });
+} else {
+  process.stdin.on('data', (data) => {
+    process.stdout.write(`Your name is: ${data.toString()}`);
+    process.exit();
+  });
+  process.on('SIGNIT', () => {
+    process.stdout.write('This important software is now closing\n');
+  });
+}
