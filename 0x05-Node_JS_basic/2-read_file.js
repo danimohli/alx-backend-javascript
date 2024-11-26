@@ -8,10 +8,8 @@ const fs = require('fs');
  */
 function countStudents(path) {
   try {
-    // Read the file synchronously
     const data = fs.readFileSync(path, 'utf-8');
     const lines = data.split('\n').filter((line) => line.trim() !== '');
-
     if (lines.length < 2) {
       throw new Error('Cannot load the database');
     }
