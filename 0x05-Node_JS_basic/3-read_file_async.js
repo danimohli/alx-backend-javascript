@@ -7,7 +7,7 @@ const fs = require('fs').promises;
  * @param {string} path - The path to the database file.
  * @returns {Promise<void>} - A Promise that resolves when processing is complete.
  */
-async function countStudents(path) {
+async function countStudents (path) {
   try {
     const data = await fs.readFile(path, 'utf-8');
     const lines = data.split('\n').filter((line) => line.trim() !== '');
